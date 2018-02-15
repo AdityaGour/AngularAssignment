@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="appDemo">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Shopping cart</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="bootstrap/css/bootstrap.css"/>
+    <script src="angular.min.js"></script>
+    <script src="apps.js"></script>
+</head>
+<body>
+    <table class="table" ng-controller="productCtrl as product">
+        <thead class="thead-inverse">
+          <tr>
+            <th>S.No</th>
+            <th>Name</th>
+            <th>Qty</th>
+            <th>Rate</th>
+            <th>Total</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat=" productitems in product.productslist"   >
+            <th scope="row" >{{$index+1}}</th>
+            <td >{{productitems.name}}</td>
+            <td>{{productitems.qty}}</td>
+            <td>{{productitems.rate}}</td>
+            <td>{{productitems.rate*productitems.qty}}</td>
+            <td ><button ng-click="product.removeitem($index)">X</button></td>
+            <td></td>
+          </tr>
+          <tr >
+            <td></td>
+             <td></td>
+             <td>Grand Total:</td>
+            <td $ ng-bind="product.gtotal()"></td>
+        
+          </tr>  
+          <tr>
+            <th scope="row"  ng-bind="product.length+1"></th>
+            <td><input type="text" ng-model="product.name"  class="form-control" required></td>
+            <td><input type="text" ng-model="product.qty"   class="form-control" required></td>
+            <td><input type="text" ng-model="product.rate"  class="form-control"  required></td>
+            <td><button class="btn" ng-click="product.add()">Add</button></td>
+         
+        </tbody>
+      </table>
+      
+      
+</body>
+</html>

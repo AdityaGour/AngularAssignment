@@ -1,0 +1,53 @@
+ <!DOCTYPE html>
+<html ng-app="demo">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Game Of flags</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="node_modules/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="node_modules/flag-icon-css/css/flag-icon.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="node_modules/angular/angular.js"></script>
+    <script src="app.js"> </script>
+   
+</head>
+<body>
+
+<div class="container" ng-controller="gameCtrl as game">
+    <div class="row">
+        <div  class="col-sm-9">
+            <h1 >Game of Flags</h1>
+        </div>
+        <div  class="col-sm-3">
+                <h6 >Score:{{game.score}}</h6>
+        </div>
+            
+    </div> 
+    <div class="row">  
+        <div class="col-sm-12"> 
+            <h3>Choose the Correct Name of country</h3>
+          <span class="flag-icon flag-icon-{{game.checkingrandom}}"></span>
+        </div>
+    </div> 
+                <input type="text" ng-model="game.score">
+                <button ng-click="game.check()">Check</button>
+                <h1 ng-bind="game.answer"></h1>
+                <!-- <h1 ng-if="game.country==game.name">Correct</h1>
+                <h1 ng-if="game.country!=game.name">Incorrect</h1> -->
+                <div  ng-repeat="x in game.arr">
+                    
+                <input type="radio"  ng-disabled="game.disabled"  name="abc"  ng-click="game.check($index)">{{x.name}} 
+
+            </div>
+        
+    
+        <button ng-click="game.next()">Next</button>
+        
+            </div>
+</div>  
+
+
+
+</body>
+</html>
